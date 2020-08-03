@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>123</div>
+    <script>
+        //执行事件步骤
+        // 1.获取事件源
+        // 2.注册事件（绑定事件）
+        // 3.添加事件处理程序（采用函数赋值的方式）；
+
+        //点击div 控制台输出    我被选中了；
+
+        //1.获取事件源
+        var click = document.querySelector('div');
+        //2.绑定事件（注册事件） 
+        //click.onclick;
+        //3.添加事件处理程序；
+        click.onclick = function (){
+                console.log('我被选中了！');
+        }
+    </script>
+</body>
+
+</html>

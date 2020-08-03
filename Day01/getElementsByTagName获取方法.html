@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>知否知否，应是绿红肥瘦1</li>
+        <li>知否知否，应是绿红肥瘦2</li>
+        <li>知否知否，应是绿红肥瘦3</li>
+        <li>知否知否，应是绿红肥瘦4</li>
+        <li>知否知否，应是绿红肥瘦5</li>
+    </ul>
+    <ul id="nav">
+        <li>生僻字1</li>
+        <li>生僻字2</li>
+        <li>生僻字3</li>
+        <li>生僻字4</li>
+        <li>生僻字5</li>
+    </ul>
+    <script>
+        //1.返回的是    获取过来元素对象的集合      以伪数组（有长度和索引  但没有shift pop 等方法）的方式存储
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]);
+        //2. 可以采取遍历的方式依次打印里面的元素对象；
+        for (let i = 0;i<lis.length;i++){
+            console.log(lis[i]);
+        }
+        //3. element.getElementsByTagName 来获取指定位置的元素对象 
+        var nav = document.getElementById('nav'); //获取nav元素
+        var spz = nav.getElementsByTagName('li');
+        console.log(spz);
+      
+        for(let i = 0; i <spz.length;i++){
+            console.log(spz[i]);
+        }
+
+    </script>
+</body>
+
+</html>

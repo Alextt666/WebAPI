@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="dlrb">
+        迪丽热巴
+    </button>
+    <button id="lq">
+        李沁
+    </button>
+    <br>
+    <img src="images/dlrb.jpg" alt="">
+    <script>
+        //修改元素属性 src
+        var dlrb = document.getElementById('dlrb');
+        var lq = document.querySelector('#lq');
+        var img = document.querySelector('img');
+        lq.onclick = function(){
+            img.src = 'images/lq.jpg'
+            img.title = '李沁'
+        }
+        dlrb.onclick = function (){
+            img.src = 'images/dlrb.jpg'
+            img.title = '迪丽热巴'
+        }
+    </script>
+</body>
+</html>

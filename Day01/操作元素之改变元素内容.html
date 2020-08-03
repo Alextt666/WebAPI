@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,p {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button>
+        显示当前时间
+    </button>
+    <div>某个时间</div>
+    <p>123</p>
+    <script>
+        //当我们点了按钮 div 里面的文字会发生变化
+        //1.获取事件源 
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2.注册事件；
+        btn.onclick = function () {
+            div.innerHTML = getDate();   //element.innerText;
+        }
+
+        // 3. 函数封装
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();  //返回几
+            var day = date.getDay();
+
+            var arr = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+            return '今天是' +' '+ year + '年' +' '+ month + '月'+' ' + dates + '日'+' '+arr[day];
+        }
+
+        //4.不添加事件 直接使用
+        var pp = document.querySelector('p');
+        pp.innerHTML = getDate();
+    </script>
+</body>
+
+</html>
