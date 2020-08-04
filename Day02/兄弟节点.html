@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.nextSibling);//#text 下一个兄弟节点包括文本
+        console.log(div.previousSibling);//#text   上一个兄弟节点包括文本
+        //2. nextElementSibling 得到下一个兄弟元素节点
+        console.log(div.nextElementSibling);
+        console.log(div.previousElementSibling);//null  有兼容性问题 IE9以上
+        
+    </script>
+</body>
+</html>

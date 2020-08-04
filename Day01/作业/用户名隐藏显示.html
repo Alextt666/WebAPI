@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            margin: 150px auto;
+            border: 1px solid #ccc;
+        }
+        .box input{
+            width: 280px;
+            border: none;
+            outline: none;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" name="" value="用户名">
+    </div>
+    <script>
+        var inp = document.querySelector('input');
+        var box = document.querySelector('.box')
+        inp.onfocus = function(){
+            this.value = '';
+            box.style.borderColor = 'pink'
+        }
+        inp.onblur = function(){
+            this.value = '用户名';
+            box.style.borderColor = '#ccc'
+        }
+    </script>
+</body>
+</html>

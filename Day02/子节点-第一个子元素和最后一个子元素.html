@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+    <script>
+        var ol = document.querySelector('ol');
+        //1. firstchild 获取第一个子节点 文本节点或者元素节点都能获取   麻烦
+        console.log(ol.firstChild); // #text;
+        //2. firstElementChild  兼容性问题
+        console.log(ol.firstElementChild);
+        console.log(ol.lastElementChild);
+        //3.实际开发写法  
+        console.log(ol.children[0]);
+        console.log(ol.children[ol.children.length -1]);
+    </script>
+</body>
+</html>
