@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        //1.node.cloneNode();
+        var lis = ul.children[0].cloneNode();
+        ul.appendChild(lis);
+        //参数是空或者flase 则是浅拷贝 只克隆复制节点本身 不克隆里面的子节点
+        var lis1 = ul.children[1].cloneNode(true);
+        //参数为true 则是深拷贝  复制标签里面的内容；
+        ul.appendChild(lis1);
+    </script>
+</body>
+</html>

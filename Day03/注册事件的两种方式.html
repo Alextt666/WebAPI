@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <script>
+        //1.传统方法  注册事件的唯一性 后面会覆盖前面
+        var btns = document.querySelectorAll('button');
+        var btn1 = btns[0];
+        btn1.onclick = function(){
+            alert('hi');
+        }
+        btn1.onclick = function(){
+            alert('hello'); //hello 覆盖 hi；
+        }
+        //2.事件监听 注册事件
+        var btn2 = btns[1];
+        //事件类型是字符串 而且没有前缀on
+        //同一个事件可以添加多个监听器（事件处理程序 function）；
+        btn2.addEventListener('click',function(){
+            alert('22');
+        })
+        btn2.addEventListener('click',function(){
+            alert('33');
+        })
+    </script>
+</body>
+</html>

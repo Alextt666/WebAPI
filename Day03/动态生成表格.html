@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        thead {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        //1.准备学生的数据
+        var dates = [{
+            name: '迪丽热巴',
+            subject: 'javascript',
+            score: 100
+        }, {
+            name: '古力娜扎',
+            subject: 'javascript',
+            score: 90
+        }, {
+            name: '李沁',
+            subject: 'javascript',
+            score: 80
+        }, {
+            name: '李冰冰',
+            subject: 'javascript',
+            score: 80
+        }];
+        //2.往tbody里面创建行  有几个人创建几行（数组长度）；
+        var tbody = document.querySelector('tbody');
+        for (let i = 0 ; i< dates.length;i++){
+            //创建tr
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //行内创建单元格 dates[i].length 来决定有几个 for 循环遍历对象
+            for(var k in dates[i]){  //里层循环管列 在这里是td
+                //创建单元格子
+                var td = document.createElement('td');
+                //把对象里面的属性值 dates[i][k]给td
+                td.innerHTML = dates[i][k];
+                tr.appendChild(td);
+            }
+            //3.创建有删除两个字的单元格
+            var td = document.createElement('td');
+            td.innerHTML = "<a href = javascript:;>删除</a>"
+            tr.appendChild(td);
+        }
+        //删除操作
+        // 获取所有的a  添加点击事件 删除当前点击对应的单元格
+        var as = document.querySelectorAll('a');
+        for (let i = 0; i< as.length;i++){
+            as[i].onclick = function(){
+                //点击a 删除当前a 所在的行(a的爸爸的爸爸) node.removeChild(child)
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+        
+
+
+        //提示
+        // for (var k in obj){
+        //     k得到的是属性名
+        //     obj[k]得到的是属性值
+        // }
+    </script>
+</body>
+
+</html>

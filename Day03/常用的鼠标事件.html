@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>我不愿被分享所以用contextmenu禁用我</div>
+    <script>
+        //1.禁止鼠标右键菜单
+        //contextmenu主要控制应该合适显示上下文菜单，主要用于程序员取消默认的上下文菜单
+        var div = document.querySelector('div');
+        div.addEventListener('contextmenu',function(e){
+            e.preventDefault();
+        })
+        //2.禁止鼠标选中 selectstart
+        document.addEventListener('selectstart',function(e){
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

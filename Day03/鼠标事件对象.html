@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //event 对象代表事件的状态 跟事件相关的一系列信息的集合 现阶段我们
+        //主要是用鼠标事件对象MouseEvent和键盘事件对象KeyboardEvent;
+        document.addEventListener('click', function (e) {
+            // 返回MouseEvent对象；
+            console.log(e);
+            //1.client 鼠标在可视区的x和y坐标
+            console.log(e.clientX); //在可视区上沿和左延的距离；
+            console.log(e.clientY); // 不管如何拖动 都是以可视范围为基准计算
+            //2.page 鼠标在页面文档的x和y坐标；
+            console.log('------------------');
+            console.log(e.pageX); //开发常用
+            console.log(e.pageY);
+            //3.screen 鼠标在电脑屏幕x 和y的坐标
+            console.log(e.screenX);
+            console.log(e.screenY);
+        
+        })
+
+    </script>
+</body>
+
+</html>
