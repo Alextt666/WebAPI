@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 800px;
+            height: 500px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>广告内容</div>
+    <script>
+        var div = document.querySelector('div');
+        function callback(){
+            div.style.display = 'none';
+        }
+        setTimeout(callback,5000);
+    </script>
+</body>
+</html>

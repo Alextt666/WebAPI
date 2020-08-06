@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="one">按钮1</button>
+    <button class="two">按钮2</button>
+    <button class="three">按钮3</button>
+    <script>
+        //1. location.assign() 重定向页面 可以返回原来的页面
+        var btn1 = document.querySelector('.one');
+        btn1.addEventListener('click',function(){
+            location.assign('http://www.baidu.com');
+        })
+        //2. location.replace() 替换原页面 不记录浏览历史 不能返回原页面
+        var btn2 = document.querySelector('.two');
+        btn2.addEventListener('click',function(){
+            location.replace('http://www.baidu.com');
+        })
+        //3. location.reload() 重新加载页面  相当于刷新按钮；或者F5 参数为true 相当于ctrl+f5强制刷新
+        var btn3 = document.querySelector('.three');
+        btn3.addEventListener('click',function(){
+            location.reload();
+        })
+    </script>
+</body>
+</html>

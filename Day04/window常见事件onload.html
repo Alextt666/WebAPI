@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 以前的script应该放在元素后面 因为要先生成元素才能进行DOM操作 
+        // window.onload 事件就是 将页面全部内容(css flash 图片等)加载完毕以后 执行的事件
+        // 所以可以放在前面
+
+        // window.onload = function(){
+        //     var btn = document.querySelector('button');
+        //     btn.addEventListener('click',function(){
+        //         alert('点击我');
+        //     })
+        // } 
+        // 传统方法只能添加一个 
+        //addEventListener就没有限制
+
+        window.addEventListener('load', function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function () {
+                alert(11);
+            })
+        })
+        window.addEventListener('load', function () {
+
+            alert(22);
+
+
+        })
+        //DOMContentLoaded 是DOM内容加载完毕后开始执行  加载速度比load快一些
+        document.addEventListener('DOMContentLoaded',function(){
+            alert(33);
+        })
+    </script>
+</head>
+
+<body>
+    <button>点击</button>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //window对象是浏览器的顶级对象 
+        //1.他是JS访问浏览器窗口的一个借口
+        //2.它是一个全局对象， 定义在全局作用域中的变量 函数都会变成window对象的属性和方法
+        //在调用的时候可以省略window,前面学习的对话框都属于window对象方法alert() prompt()等
+
+        var num = 10;
+        console.log(num);//省略window
+        console.log(window.num);//实际上已经变成是window的属性
+
+        function fn(){
+            console.log(11);
+        }
+        fn();//省略window
+        window.fn()//不省略的写法
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //常用的键盘事件
+
+        //1. keyup  按键弹起触发
+        document.addEventListener('keyup',function(){
+            console.log('我弹起来了');
+        })
+        //2. keydown    按键按下的时候触发
+        document.addEventListener('keydown',function(){
+            console.log('我按下了');
+        })
+        //3. keypress   按键按下的时候触发
+        //不识别功能键 比如 ctrl    shift 箭头等；
+        document.addEventListener('keypress',function(){
+            console.log('press');
+        })
+
+        //乱序的时候 执行顺序是 down -> press -> up；
+    </script>
+</body>
+</html>

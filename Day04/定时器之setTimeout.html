@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.setTimeout  定时器里的函数称为回调函数 callback
+        //语法规范： window.setTimeout(调用函数，延时事件)；
+        // setTimeout 类似定时炸弹 到了规定的时间就会执行对应的函数 然后销毁；
+        //1.这个window在调用的时候可以省略
+        //2.这个延时时间单位是毫秒  但是可以省略    如果省略默认是0
+        //3.这个函数可以是匿名函数 也可以是调用别的函数
+        //4. 页面中可能有很多的定时器 所以我们经常给定时器加标识符 （取个名字）
+
+        // setTimeout(function(){
+        //     alert('时间到了')
+        // },2000)
+
+        function callback(){
+            console.log('爆炸了');
+        }
+        setTimeout(callback,2000); //调用方法是 setTimeout(函数名，时间)
+        var timer1 = setTimeout(callback,4000);
+        var timer2 = setTimeout(callback,6000)
+    </script>
+</body>
+</html>

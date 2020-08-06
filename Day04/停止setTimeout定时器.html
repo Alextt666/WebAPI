@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>阻止爆炸</button>
+    <script>
+        //window.clearTimeout(timeoutID)
+        var btn = document.querySelector('button');
+
+        var timer = setTimeout(function(){
+            alert('爆炸了')
+        },5000);
+        btn.addEventListener('click',function(){
+            window.clearTimeout(timer);
+        })
+    </script>
+</body>
+</html>

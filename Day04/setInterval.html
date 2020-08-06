@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //window.setInterval(回调函数,[间隔的毫秒数]);
+        //反复调用 每隔一段时间 重复调用里面的回调函数
+        setInterval(function(){
+            console.log('继续输出');
+        },1000)
+
+
+        //比较 ：  setTimeout 延时时间到了就调用回调函数，只调用一次 就结束销毁
+        //         setInterval 每隔这个延时时间就 调用一次回调函数 会重复调用
+    </script>
+</body>
+</html>
