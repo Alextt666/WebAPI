@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 20px 0 0 20px;
+            cursor: move;
+        }
+
+        .smallImg {
+            width: 398px;
+            height: 100%;
+            border: 1px solid #ccc;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            opacity: .5;
+            display: none;
+        }
+
+        .bigBox {
+            position: absolute;
+            top: 0;
+            left: 418px;
+            width: 614px;
+            height: 890px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: none;
+        }
+
+        .bigImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img src="images/01.jpg" alt="#" class="smallImg">
+        <div class="mask"></div>
+        <div class="bigBox"><img src="images/01.jpg" alt="#" class="bigImg"></div>
+    </div>
+    <script>
+        //三个功能模块： 
+        // 鼠标经过小图片盒子， 黄色遮挡层 和大图片盒子显示，离开 2个盒子功能；
+        // 黄色的遮挡层跟随鼠标功能；
+        // 移动黄色遮挡层，大图片跟随移动功能；
+
+        // 1. 进过图片盒子 遮挡层显示和大图片显示；
+        var main = document.querySelector('.main');
+        var smallImg = document.querySelector('.samllImg');
+        var mask = document.querySelector('.mask');
+        var bigBox = document.querySelector('.bigBox');
+        var bigImg = document.querySelector('.bigImg');
+        main.addEventListener('mouseover', function () {
+            bigBox.style.display = 'block';
+            mask.style.display = 'block';
+        })
+        main.addEventListener('mouseout', function () {
+            bigBox.style.display = 'none';
+            mask.style.display = 'none';
+        })
+        //2.遮挡层 跟随鼠标功能;
+        var smallBoxX, smallBoxY = 0;
+
+        main.addEventListener('mousemove', function (e) {
+            //计算鼠标在盒子内的坐标
+            smallBoxX = e.pageX - this.offsetLeft;
+            smallBoxY = e.pageY - this.offsetTop;
+            // 将鼠标放在遮挡层的中央
+            var realX = smallBoxX - mask.offsetWidth / 2;
+            var realY = smallBoxY - mask.offsetHeight / 2;
+            //遮挡层的最大移动距离
+            var maskMaxX = main.offsetWidth - mask.offsetWidth;
+            var maskMaxY = main.offsetHeight - mask.offsetHeight;
+            //设置周围界限
+            if (realX <= 0) {
+                realX = 0;
+            }
+            else if (realX >=  maskMaxX) {
+                realX =  maskMaxX;
+            }
+            if (realY <= 0) {
+                realY = 0;
+            }
+            else if (realY >=  maskMaxY) {
+                realY =  maskMaxY;
+            }
+            //将鼠标的坐标赋值给遮挡层
+            mask.style.left = realX + 'px';
+            mask.style.top = realY + 'px';
+
+            //大图片跟随移动
+            //因为必须在mousemove触发的情况下 大图片同时移动 所以应该写进mousemove 事件内
+            //大图片的移动距离 = 遮挡层移动距离 * 大图片最大移动距离/遮挡层的最大距离；
+            //大图最大移动距离是 1024-614  最大移动距离bigMax
+            var bigMax = bigImg.offsetWidth - bigBox.offsetWidth;
+            //大图片的移动距离X Y
+            var bigX = realX*bigMax/maskMaxX;
+            var bigY = realY*bigMax/maskMaxY;
+            bigImg.style.left = -bigX + 'px';
+            bigImg.style.top = -bigY + 'px';
+        })
+        
+
+
+    </script>
+</body>
+
+</html>

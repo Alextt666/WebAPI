@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        //offset 和 style 的区别
+        console.log(box.offsetWidth);
+        console.log(box.style.width);
+        //1.
+        //offset返回的是实际大小 包含padding border
+        //style 返回的是width
+        //2.
+        //offset 可以获取任意样式表内的值
+        //style 只能获取行内样式表内的值
+        //3.
+        //offset 的值没有单位
+        //style 有Px单位
+        //4. 
+        //offset 是只读属性 不能改写
+        //style 是可读写的
+
+        //想要获取元素的大小位置， 用offset 
+        //想要给元素进行更改 用style更合适
+    </script>
+</body>
+</html>
