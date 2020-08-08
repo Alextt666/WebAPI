@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            position: relative;
+            width: 1200px;
+            height: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .left img,.right img{
+            width: 50px;
+        }
+        .left,.right{
+            position: absolute;
+        }
+        .left{
+            top: 50%;
+            left: 0px;
+        }
+        .right{
+            top: 50%;
+            right: 0;
+        }
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+            z-index: -1;
+        }
+        ul li {
+            list-style-type: none;
+            float: left;
+        }
+        ul li img{
+            width: 1200px;
+            height: 800px;
+        }
+        ol{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+        ol li{
+            list-style-type: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid rgb(150, 134, 134);
+            float: left;
+            margin: 10px;
+        }
+    </style>
+    <!-- 需要引入动画文件 所以应该写到 引入者的上面 -->
+    <script src="animate.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 整个包裹 -->
+    <div class="wrap">
+        <!-- 左侧按钮 -->
+        <a href="javascript:;" class="left"><img src="images/轮播向左.png" alt=""></a>
+        <!-- 右侧按钮 -->
+        <a href="javascript:;" class="right"><img src="images/轮播向右.png" alt=""></a>
+        <!-- 核心滚动区域 -->
+        <ul class="content">
+            <li><a href="javascript:;"><img src="images/01.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="images/02.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="images/03.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="images/04.jpg" alt=""></a></li>
+            
+        </ul>
+        <!-- 小圆球 -->
+       <ol>
+         
+       </ol>
+    </div>
+</body>
+
+</html>

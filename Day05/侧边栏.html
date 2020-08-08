@@ -9,40 +9,37 @@
             margin: 10px;
             padding: 0;
         }
+        .w{
+            width: 1200px;
+            margin: 10px auto;
+        }
         .slide{
             position: absolute;
-            right: -60px;
+            top: 400px;
+            left: 50%;
+            margin-left: 600px;
             width: 50px;
             height:100px;
             background-color: #ccc;
+            text-align: center;
+           
         }
         .slide span{
-            display: inline-block;
-            padding-left: 5px;
-            font-size: 20px;
-            line-height: 20px;
+            position: absolute;
+            bottom: 0;
+            display: none;
         }
-        .slide #top::after{
-            content: '';
-            width: 50px;
-            height: 20px;
-            background-color: black;
-            z-index: 99;
-        }
-        .main{
-            margin: 0 50px 10px;
-            position: relative;
-        }
+        
         .header{
             background-color: skyblue;
             height: 200px;
         }
         .banner{
             background-color: purple;
-            height: 400px;
+            height: 800px;
         }
         .section{
-            height:600px;
+            height:1200px;
             background-color: greenyellow;
         }
     </style>
@@ -51,12 +48,40 @@
 <body>
     <div class="main">
         <div class="slide">
-            <span id="top">回到顶部</span>
+            <span id="topNav">回到顶部</span>
         </div>
-        <div class="header">header</div>
-        <div class="banner">banner</div>
-        <div class="section">section</div>
+        <div class="header w">header</div>
+        <div class="banner w">banner</div>
+        <div class="section w">section</div>
     </div>
-    
+    <script>
+        // 给元素卷去的就是scrollTop 给整个页面的就是window.pageYOffset;
+        // 1.获取侧边栏
+        var slide = document.querySelector('.slide');
+        var topNav = document.querySelector('#topNav');
+        var banner = document.querySelector('.banner');
+        //获取section 
+        var section = document.querySelector('.section');
+        var sectionTop = section.offsetTop;
+        var bannerTop = banner.offsetTop;
+        var slideTop = slide.offsetTop - bannerTop;
+        document.addEventListener('scroll',function(){
+            // console.log(window.pageYOffset);
+            if(window.pageYOffset >=bannerTop){
+                slide.style.position = 'fixed';
+                slide.style.top = slideTop + 'px';
+            }
+            else {
+                slide.style.top = '400px';
+                slide.style.position = 'absolute';
+            }
+            if (window.pageYOffset>= sectionTop){
+                topNav.style.display = 'block';
+            }
+            else {
+                topNav.style.display = 'none';
+            }
+        })
+    </script>
 </body>
 </html>

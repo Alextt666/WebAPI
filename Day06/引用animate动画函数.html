@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sliderbar{
+            margin: 200px 0 0 98%;
+            width: 150px;
+            height: 50px;
+            position: relative;
+            color: white;
+        }
+        .con{
+            position: absolute;
+            left: 50px;
+            width: 100px;
+            height: 50px;
+            background-color: purple;
+            text-align: center;
+            line-height: 50px;
+        }
+        span{
+            position: absolute;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            background-color: purple;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+    <div class="sliderbar">
+        <span id="arrow">←</span id="arrow">
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        //当鼠标经过sliderbar 就会让 con这个盒子滑动到左侧
+        var sliderbar = document.querySelector('.sliderbar')
+        var con = document.querySelector('.con')
+        var arrow = document.querySelector('span');
+
+        sliderbar.addEventListener('mouseenter',function(){
+            animation(con,-100,function(){
+                arrow.innerHTML = '→'
+            });
+            //当动画内容执行完毕 就把←改为→；用回调函数;
+        })
+        //当鼠标离开sliderbar 就会让 con这个盒子滑动到右侧
+        sliderbar.addEventListener('mouseleave',function(){
+            animation(con,50,function(){
+                arrow.innerHTML = '←'
+            });
+
+        })
+    </script>
+</body>
+</html>
