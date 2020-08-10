@@ -1,4 +1,6 @@
-function animation(obj, target,callback) {
+function animation(obj, target, callback) {
+    // callback();
+
     //缓动算法： 步长等于 当前位置-目标位置/10 
     clearInterval(obj.timer);
     obj.timer = setInterval(function () {
@@ -6,13 +8,15 @@ function animation(obj, target,callback) {
         //应该把步长改为整数 避免出现小数问题 向上取整
         var step = (target - obj.offsetLeft) / 10;
         step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer);
-            //回调函数写到定时器结束；
-            if(callback){
-                callback();
-            }
+            // if (callback) {
+            //     callback();
+            // };
+            callback&&callback();
         };
         obj.style.left = obj.offsetLeft + step + 'px';
     }, 30);
 };
+

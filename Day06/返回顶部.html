@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 0;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .slide {
+            position: absolute;
+            top: 400px;
+            left: 50%;
+            margin-left: 600px;
+            width: 50px;
+            height: 100px;
+            background-color: #ccc;
+            text-align: center;
+
+        }
+
+        .slide span {
+            position: absolute;
+            bottom: 0;
+            display: none;
+        }
+
+        .header {
+            background-color: skyblue;
+            height: 200px;
+        }
+
+        .banner {
+            background-color: purple;
+            height: 800px;
+        }
+
+        .section {
+            height: 1200px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="slide">
+            <span id="topNav">回到顶部</span>
+        </div>
+        <div class="header w">header</div>
+        <div class="banner w">banner</div>
+        <div class="section w">section</div>
+    </div>
+    <script>
+        // 给元素卷去的就是scrollTop 给整个页面的就是window.pageYOffset;
+        // 1.获取侧边栏
+        var slide = document.querySelector('.slide');
+        var topNav = document.querySelector('#topNav');
+        var banner = document.querySelector('.banner');
+        //获取section 
+        var section = document.querySelector('.section');
+        var sectionTop = section.offsetTop;
+        var bannerTop = banner.offsetTop;
+        var slideTop = slide.offsetTop - bannerTop;
+        document.addEventListener('scroll', function () {
+            // console.log(window.pageYOffset);
+            if (window.pageYOffset >= bannerTop) {
+                slide.style.position = 'fixed';
+                slide.style.top = slideTop + 'px';
+            }
+            else {
+                slide.style.top = '400px';
+                slide.style.position = 'absolute';
+            }
+            if (window.pageYOffset >= sectionTop) {
+                topNav.style.display = 'block';
+            }
+            else {
+                topNav.style.display = 'none';
+            }
+        })
+        //3.当点击回到顶部模块  就让窗口滚动到页面最上；
+        //用window.scroll(x,y)
+        //x和y没有px；
+        topNav.addEventListener('click', function () {
+          animation(window,0);
+        })
+        //修改动画函数
+        function animation(obj, target, callback) {
+            // callback();
+
+            //缓动算法： 步长等于 当前位置-目标位置/10 
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                //步长每次计时都改变才可以 所以要写进计时器；
+                //应该把步长改为整数 避免出现小数问题 向上取整
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    // if (callback) {
+                    //     callback();
+                    // };
+                    callback && callback();
+                };
+                window.scroll(0,window.pageYOffset+step);
+            }, 30);
+        };
+
+
+    </script>
+</body>
+
+</html>

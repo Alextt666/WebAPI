@@ -12,6 +12,7 @@
 
         .car {
             position: absolute;
+            left: 500px;
             margin-top: 100px;
             width: 100px;
             height: 100px;
@@ -28,7 +29,9 @@
     </div>
     <script>
         //封装函数动画
-        function animation(obj, target) {
+        function animation(obj, target, callback) {
+            // callback();
+
             //缓动算法： 步长等于 当前位置-目标位置/10 
             clearInterval(obj.timer);
             obj.timer = setInterval(function () {
@@ -36,8 +39,12 @@
                 //应该把步长改为整数 避免出现小数问题 向上取整
                 var step = (target - obj.offsetLeft) / 10;
                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
-                if (obj.offsetLeft == target) {
+            
+                if (obj.offsetLeft == target ||obj.offsetLeft == target+1 ) {
                     clearInterval(obj.timer);
+                    if (callback) {
+                        callback();
+                    };
                 };
                 obj.style.left = obj.offsetLeft + step + 'px';
             }, 30);
@@ -46,7 +53,9 @@
         var Btn2 = document.querySelector('.btn2');
         var car = document.querySelector('.car')
         Btn1.addEventListener('click', function () {
-            animation(car, 1000);
+            animation(car, 1000, function () {
+                alert('hi');
+            });
         })
         Btn2.addEventListener('click', function () {
             animation(car, 1500);

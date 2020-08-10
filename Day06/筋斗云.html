@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        .c-nav {
+            width: 900px;
+            height: 42px;
+            background: #fff url(images/rss.png) no-repeat right center;
+            margin: 100px auto;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .c-nav ul {
+            position: absolute;
+        }
+        
+        .c-nav li {
+            float: left;
+            width: 83px;
+            text-align: center;
+            line-height: 42px;
+        }
+        
+        .c-nav li a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            height: 42px;
+        }
+        
+        .c-nav li a:hover {
+            color: white;
+        }
+        
+        .cloud {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="c-nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="javascript:;" class="current">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+            <li><a href="javascript:;">师资力量</a></li>
+        </ul>
+    </div>
+    <script src="animate.js"></script>
+    <script>
+        // 鼠标经过某个li  筋斗云跟到当前li
+        // 鼠标离开 li 筋斗云复原为原来位置
+        // 鼠标点击li 筋斗云留在当前点击的li
+        var cloud = document.querySelector('.cloud');
+        console.log(cloud);
+        var cnav = document.querySelector('.c-nav');
+        console.log(cnav);
+        var  lis = cnav.querySelectorAll('li');
+        console.log(lis);
+        //给li绑定事件
+        //创建一个变量current 作为云的起始位置
+        var current = 0;
+        for (let i = 0; i < lis.length;i++){
+            //1.鼠标经过把当前li 的位置作为目标值
+            lis[i].addEventListener('mouseenter',function(){
+                animation(cloud,this.offsetLeft);
+            })
+            //2.鼠标离开就到起始位置curr    ent
+            lis[i].addEventListener('mouseleave',function(){
+                animation(cloud,current);
+            })
+            //3.鼠标点击把当前位置作为目标值
+            lis[i].addEventListener('click',function(){
+                current = this.offsetLeft;
+            })
+        }
+    </script>
+</body>
+</html>

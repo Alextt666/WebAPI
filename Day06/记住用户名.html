@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" id="remeber">记住用户名
+    <script>
+        var iptUser = document.querySelector('#username')
+        var username = localStorage.getItem('username')
+        var check = document.querySelector('#remeber')
+        if (username) {
+            iptUser.value = username;
+            check.checked = true;
+            check.addEventListener('change', function () {
+                localStorage.removeItem('username');
+                iptUser.value = '';
+            });
+        }
+        else {
+            check.addEventListener('change', function () {
+                var val = iptUser.value;
+                localStorage.setItem('username', val)
+            })
+        }
+    </script>
+</body>
+
+</html>
